@@ -30,7 +30,7 @@
         @yield('contenido')
     </main>
 
-    <footer class="text-center p-5 text-gray-500 font-bold">
+    <footer class="mt-10 text-center p-5 text-gray-500 font-bold">
         {{--
             Imprimimos información con las dobles llaves, como en Angular.
             Ya que solo es para imprimir, podemos usar @php echo ... @endphp para
