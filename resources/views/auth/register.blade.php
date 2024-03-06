@@ -11,13 +11,24 @@
         </div>
 
         <div class="md:w-4/12 bg-white p-6 rounded-lg shadow-xl">
-            <form>
+            <form action="{{ route('register') }}" method="POST">
+                {{-- @csrf genera un token --}}
+                @csrf
                 <div class="mb-5">
                     <label for="name" class="mb-2 block uppercase text-gray-500 font-bold">
                         Nombre
                     </label>
-                    <input id="name" name="name" type="text" placeholder="Tu nombre"
-                        class="border p-3 w-full rounded-lg">
+                    <input id="name" name="name" type="text" placeholder="Tu nombre" {{-- Agregar una clase de error en caso de error en el campo 'name' --}}
+                        class="border p-3 w-full rounded-lg @error('name') border-red-500 @enderror" {{-- Recuperar el valor anterior del input para que no se borre al enviar --}}
+                        value="{{ old('name') }}">
+
+                    {{--
+                        Añadimos el mensaje de error que recibimos del método validate en el controlador.
+                        Obtenemos el error desde el campo que los estamos recibiendo.
+                    --}}
+                    @error('name')
+                        <p class="bg-red-500 text-white my-2 p-2 rounded-lg text-sm text-center">{{ $message }}</p>
+                    @enderror
                 </div>
 
                 <div class="mb-5">
@@ -26,6 +37,10 @@
                     </label>
                     <input id="username" name="username" type="text" placeholder="Tu nombre de usuario"
                         class="border p-3 w-full rounded-lg">
+
+                    @error('username')
+                        <p class="bg-red-500 text-white my-2 p-2 rounded-lg text-sm text-center">{{ $message }}</p>
+                    @enderror
                 </div>
 
                 <div class="mb-5">
@@ -34,6 +49,10 @@
                     </label>
                     <input id="email" name="email" type="email" placeholder="Tu correo electrónico"
                         class="border p-3 w-full rounded-lg">
+
+                    @error('email')
+                        <p class="bg-red-500 text-white my-2 p-2 rounded-lg text-sm text-center">{{ $message }}</p>
+                    @enderror
                 </div>
 
                 <div class="mb-5">
@@ -42,6 +61,10 @@
                     </label>
                     <input id="password" name="password" type="password" placeholder="Tu contraseña"
                         class="border p-3 w-full rounded-lg">
+
+                    @error('password')
+                        <p class="bg-red-500 text-white my-2 p-2 rounded-lg text-sm text-center">{{ $message }}</p>
+                    @enderror
                 </div>
 
                 <div class="mb-5">

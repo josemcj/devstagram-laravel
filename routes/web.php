@@ -23,4 +23,5 @@ Route::get('/', function () {
  * el nombre del controlador que queremos utilizar, añadiendole `::class`, seguido del
  * nombre del método que llama a la view.
  */
-Route::get('/crear-cuenta', [RegisterController::class, 'index']);
+Route::get('/register', [RegisterController::class, 'index'])->name('register');
+Route::post('/register', [RegisterController::class, 'store']);
