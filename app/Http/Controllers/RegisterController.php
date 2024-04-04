@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 /**
@@ -27,6 +29,8 @@ class RegisterController extends Controller
 
     public function store(Request $request)
     {
+        $request->request->add(['username' => Str::slug($request->username)]);
+
         /**
          * dd() es un método en Laravel que nos sirve para debuguear.
          * Imprime lo que le mandemos y detiene la ejecución.
@@ -49,6 +53,15 @@ class RegisterController extends Controller
             'password'  => 'required|confirmed|min:6'
         ]);
 
-        dd('Creando usuario');
+        /**
+         * Para crear un registro llamamos al modelo y usamos el método estático `create`.
+         * `slug` genera un slug de URL. Elimina los espacios y los sustituye por guiones bajos.
+         */
+        User::create([
+            'name' => $request->name,
+            'username' => $request->username, // Str::slug($request->username) -> También puede ser así
+            'email' => $request->email,
+            'password' => $request->password,
+        ]);
     }
 }

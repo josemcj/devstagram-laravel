@@ -15,10 +15,14 @@ class User extends Authenticatable
     /**
      * The attributes that are mass assignable.
      *
+     * Aquí asignamos los valores que estamos esperando para registrar en la base de datos
+     * cuando usamos `User::create()`
+     *
      * @var array<int, string>
      */
     protected $fillable = [
         'name',
+        'username',
         'email',
         'password',
     ];
