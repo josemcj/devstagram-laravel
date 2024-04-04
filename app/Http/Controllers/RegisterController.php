@@ -4,6 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+/**
+ * CONVENCIONES PARA NOMBRAR METODOS.
+ *
+ * Cuando realizamos una peticion GET llamamos al método: `index`.
+ * Cuando es una petición POST, debido a que es para almacenar información, lo ideal es que el
+ * método se llame `store`.
+ * Para una petición el método se llama `destroy`.
+ * @see https://laravel.com/docs/9.x/controllers#actions-handled-by-resource-controller
+ */
+
 class RegisterController extends Controller
 {
     /**
@@ -36,7 +46,9 @@ class RegisterController extends Controller
             'name'      => 'required|min:5',
             'username'  => ['required', 'unique:users', 'min:3', 'max:30'],
             'email'     => ['required', 'unique:users', 'email', 'max:60'],
-            'password'  => 'required'
+            'password'  => 'required|confirmed|min:6'
         ]);
+
+        dd('Creando usuario');
     }
 }

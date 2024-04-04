@@ -36,7 +36,8 @@
                         Username
                     </label>
                     <input id="username" name="username" type="text" placeholder="Tu nombre de usuario"
-                        class="border p-3 w-full rounded-lg">
+                        class="border p-3 w-full rounded-lg @error('username') border-red-500 @enderror"
+                        {{-- Recuperar el valor anterior del input para que no se borre al enviar --}} value="{{ old('username') }}">
 
                     @error('username')
                         <p class="bg-red-500 text-white my-2 p-2 rounded-lg text-sm text-center">{{ $message }}</p>
@@ -48,7 +49,8 @@
                         Email
                     </label>
                     <input id="email" name="email" type="email" placeholder="Tu correo electrónico"
-                        class="border p-3 w-full rounded-lg">
+                        class="border p-3 w-full rounded-lg @error('email') border-red-500 @enderror" {{-- Recuperar el valor anterior del input para que no se borre al enviar --}}
+                        value="{{ old('email') }}">
 
                     @error('email')
                         <p class="bg-red-500 text-white my-2 p-2 rounded-lg text-sm text-center">{{ $message }}</p>
@@ -60,7 +62,8 @@
                         Contraseña
                     </label>
                     <input id="password" name="password" type="password" placeholder="Tu contraseña"
-                        class="border p-3 w-full rounded-lg">
+                        class="border p-3 w-full rounded-lg @error('password') border-red-500 @enderror"
+                        {{-- Recuperar el valor anterior del input para que no se borre al enviar --}} value="{{ old('password') }}">
 
                     @error('password')
                         <p class="bg-red-500 text-white my-2 p-2 rounded-lg text-sm text-center">{{ $message }}</p>

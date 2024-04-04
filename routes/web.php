@@ -22,6 +22,9 @@ Route::get('/', function () {
  * Definimos la ruta y en vez de llamar a una  función, le pasamos en un arreglo
  * el nombre del controlador que queremos utilizar, añadiendole `::class`, seguido del
  * nombre del método que llama a la view.
+ *
+ * `name('ruta')` lo utilizamos como un alias. Cada vez que indiquemos a la ruta con el nombre
+ * ingresado dentro de `name`  redirigirá a la ruta donde corresponda.
  */
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'store']);
