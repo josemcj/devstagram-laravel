@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Schema;
  *
  * El método `up` es el que se ejecuta cuando hacemos la migración, mientras que el
  * método `down` es el que se ejecuta cuando hacemos un `rollback`.
+ *
+ * Para este caso, añadimos la columna `username` a la tabla `users`. Para ejecutar la migración,
+ * en la consola ejecutamos `php artisan migrate`.
  */
 
 return new class extends Migration
