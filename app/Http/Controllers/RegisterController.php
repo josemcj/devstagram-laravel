@@ -66,6 +66,7 @@ class RegisterController extends Controller
 
         /**
          * Autenticar el usuario.
+         * Retorna `true` o `false` si pudo autenticarlo.
          */
         // auth()->attempt([
         //     'email' => $request->email,
