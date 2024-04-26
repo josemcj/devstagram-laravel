@@ -27,8 +27,11 @@ class LoginController extends Controller
          * Este mensaje lo mostramos en el formulario con `session()`.
          *
          * Con `back()` podemos regresar a la pagina anterior, en este caso a formulario de login.
+         *
+         * Tomamos el valor del checkbox `remember` y lo pasamos a `attempt` para saber si el usuario desea
+         * mantener su sesion iniciada.
          */
-        if(! auth()->attempt($request->only('email', 'password')) ) {
+        if(! auth()->attempt($request->only('email', 'password'), $request->remember) ) {
             return back()->with('mensaje', 'Usuario y/o contraseña incorrectos');
         }
 
