@@ -76,6 +76,6 @@ class RegisterController extends Controller
         // Otra forma de autenticar
         auth()->attempt($request->only('email', 'password'));
 
-        return redirect()->route('posts.index');
+        return redirect()->route('posts.index', $request->username);
     }
 }

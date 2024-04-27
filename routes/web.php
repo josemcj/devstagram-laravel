@@ -37,4 +37,14 @@ Route::post('/login', [LoginController::class, 'store']);
 
 Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 
-Route::get('/{user}', [PostController::class, 'index'])->name('posts.index');
+/**
+ * Route Model Binding.
+ *
+ * La ruta se asocia a un modelo y cuando le pasamos un parametro busca por el ID (por defecto) en
+ * la base de datos y pasa la informacion automaticamente al metodo introducido.
+ *
+ * Podemos especificar cual es la columna por la que debera buscar en la base de datos.
+ */
+Route::get('/{user:username}', [PostController::class, 'index'])->name('posts.index');
+
+Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
