@@ -4,7 +4,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    @vite('resources/css/app.css')
+    {{--
+        Permite que añadamos archivos dinamicamente, solo cuando los requerimos.
+        Añadimos los elementos con @push
+    --}}
+    @stack('styles')
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <title>@yield('titulo') | DevStagram</title>
 </head>
 
