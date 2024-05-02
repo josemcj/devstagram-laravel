@@ -64,7 +64,7 @@
                         Añadimos el mensaje de error que recibimos del método validate en el controlador.
                         Obtenemos el error desde el campo que los estamos recibiendo.
                     --}}
-                    @error('titulo')
+                    @error('descripcion')
                         <p class="bg-red-500 text-white my-2 p-2 rounded-lg text-sm text-center">{{ $message }}</p>
                     @enderror
                 </div>
