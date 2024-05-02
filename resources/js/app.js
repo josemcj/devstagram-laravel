@@ -1,7 +1,7 @@
 // import './bootstrap';
-import Dropzone from "dropzone";
+import Dropzone from 'dropzone';
 
-Dropzone.autoDiscover = false
+Dropzone.autoDiscover = false;
 
 const dropzone = new Dropzone('#dropzone', {
     dictDefaultMessage: 'Sube aquí tu imagen',
@@ -10,4 +10,9 @@ const dropzone = new Dropzone('#dropzone', {
     dictRemoveFile: 'Borrar archivo',
     maxFiles: 1,
     uploadMultiple: false,
-})
+});
+
+dropzone.on('success', function (file, message) {
+    console.log(file);
+    console.log(message);
+});
