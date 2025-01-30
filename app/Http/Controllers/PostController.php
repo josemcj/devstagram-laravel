@@ -21,7 +21,7 @@ class PostController extends Controller
     public function index(User $user)
     {
         /**
-         * Pasamos informacion a la vista en el segundo parametro que toma esra funcion.
+         * Pasamos informacion a la vista en el segundo parametro que toma esta funcion.
          */
         return view('dashboard', [
             'user' => $user
@@ -31,5 +31,10 @@ class PostController extends Controller
     public function create()
     {
         return view('posts.create');
+    }
+
+    public function store()
+    {
+        dd('Creando la publicación');
     }
 }
