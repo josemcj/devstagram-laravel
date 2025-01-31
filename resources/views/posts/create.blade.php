@@ -24,15 +24,21 @@
                     <label for="titulo" class="mb-2 block uppercase text-gray-500 font-bold">
                         Título de la publicación
                     </label>
-                    <input id="titulo" name="titulo" type="text" placeholder="Título de la publicación"
-                        {{-- Agregar una clase de error en caso de error en el campo 'name' --}} class="border p-3 w-full rounded-lg @error('name') border-red-500 @enderror"
-                        {{-- Recuperar el valor anterior del input para que no se borre al enviar --}} value="{{ old('titulo') }}">
+                    <input id="titulo" name="titulo" type="text" placeholder="Título de la publicación" class="border p-3 w-full rounded-lg @error('titulo') border-red-500 @enderror" value="{{ old('titulo') }}">
 
                     {{--
                         Añadimos el mensaje de error que recibimos del método validate en el controlador.
                         Obtenemos el error desde el campo que los estamos recibiendo.
                     --}}
                     @error('titulo')
+                        <p class="bg-red-500 text-white my-2 p-2 rounded-lg text-sm text-center">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div class="mb-5">
+                    <input type="hidden" name="image" value="{{ @old('image') }}">
+
+                    @error('image')
                         <p class="bg-red-500 text-white my-2 p-2 rounded-lg text-sm text-center">{{ $message }}</p>
                     @enderror
                 </div>
