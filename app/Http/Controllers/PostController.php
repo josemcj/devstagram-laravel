@@ -42,12 +42,35 @@ class PostController extends Controller
             'image' => 'required'
         ]);
 
+        /**
+         * Forma 1 de crear.
+         */
         Post::create([
             'title' => $request->titulo,
             'description' => $request->descripcion,
             'image' => $request->image,
             'user_id' => auth()->user()->id
         ]);
+
+        /**
+         * Forma 2 de crear.
+         */
+        // $post = new Post;
+        // $post->title = $request->titulo;
+        // $post->description = $request->descripcion;
+        // $post->image = $request->image;
+        // $post->user_id = auth()->user()->id;
+        // $post->save();
+
+        /**
+         * Una vez que se tiene la relacion con los metodos `hasMany` y `belongsTo`, podemos crear un posts de la
+         * siguiente manera.
+         */
+        // $request->user()->posts()->create([
+        //     'title' => $request->titulo,
+        //     'description' => $request->descripcion,
+        //     'image' => $request->image
+        // ]);
 
         return redirect()->route('posts.index', auth()->user()->username);
     }
