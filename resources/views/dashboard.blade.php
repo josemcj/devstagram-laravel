@@ -14,7 +14,7 @@
 
             <div class="flex gap-4 md:gap-6">
                 <div class="flex flex-col md:flex-row text-gray-500 text-center">
-                    <p class="font-bold md:mr-1">{{ $posts->count() }}</p>
+                    <p class="font-bold md:mr-1">{{ $posts->total() }}</p>
                     <p>publicaciones</p>
                 </div>
 
