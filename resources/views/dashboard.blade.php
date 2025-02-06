@@ -14,7 +14,7 @@
 
             <div class="flex gap-4 md:gap-6">
                 <div class="flex flex-col md:flex-row text-gray-500 text-center">
-                    <p class="font-bold md:mr-1">0</p>
+                    <p class="font-bold md:mr-1">{{ $posts->count() }}</p>
                     <p>publicaciones</p>
                 </div>
 
@@ -53,4 +53,28 @@
             </div>
         </div>
     </div> --}}
+
+    <section>
+        <h2 class="text-4xl text-center font-black my-10">Publicaciones</h2>
+
+        @if ($posts->count() === 0)
+            <div class="my-20">
+                <p class="text-gray-600 text-center text-sm font-bold">No hay publicaciones</p>
+            </div>
+        @else
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                @foreach ($posts as $post)
+                    <div>
+                        <a href="#">
+                            <img src="{{ asset('uploads') . '/' . $post->image }}" alt="Imagen del post {{ $post->title }}">
+                        </a>
+                    </div>
+                @endforeach
+            </div>
+
+            <div class="my-5">
+                {{ $posts->links() }}
+            </div>
+        @endif
+    </section>
 @endsection

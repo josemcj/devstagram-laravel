@@ -38,6 +38,6 @@ class LoginController extends Controller
         /**
          * Si el usuario de autentico correctamente.
          */
-        return redirect()->route('posts.index');
+        return redirect()->route('posts.index', auth()->user()->username);
     }
 }
