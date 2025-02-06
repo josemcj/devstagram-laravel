@@ -21,11 +21,17 @@ class PostController extends Controller
 
     public function index(User $user)
     {
+        $posts = Post::where('user_id', $user->id)->paginate(8);
+
+        // Otra forma (no se puede paginar)
+        // $user->posts;
+
         /**
          * Pasamos informacion a la vista en el segundo parametro que toma esta funcion.
          */
         return view('dashboard', [
-            'user' => $user
+            'user' => $user,
+            'posts' => $posts
         ]);
     }
 
