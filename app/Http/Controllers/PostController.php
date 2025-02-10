@@ -16,7 +16,7 @@ class PostController extends Controller
          * que verificará la sesión.
          * Si no hay una sesión activa redirecciona a `/login`.
          */
-        $this->middleware('auth');
+        $this->middleware('auth')->except(['index', 'show']);
     }
 
     public function index(User $user)
