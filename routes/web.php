@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ImagenController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
@@ -51,6 +52,8 @@ Route::get('/{user:username}', [PostController::class, 'index'])->name('posts.in
 Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
 Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
 Route::get('/{user:username}/posts/{post}', [PostController::class, 'show'])->name('posts.show');
+
+Route::post('/posts/{post}/comment', [CommentController::class, 'store'])->name('comments.store');
 
 /**
  * Subir imagenes al servidor.

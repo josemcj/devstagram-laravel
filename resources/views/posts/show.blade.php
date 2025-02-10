@@ -5,7 +5,7 @@
 @endsection
 
 @section('contenido')
-    <div class="container mx-auto flex gap-5">
+    <div class="container mx-auto md:flex gap-5">
         <div class="md:w-1/2">
             <img src="{{ asset('uploads') . '/' . $post->image }}" alt="Imagen del post {{ $post->title }}">
 
@@ -33,7 +33,12 @@
                 @auth
                     <p class="text-xl font-bold text-center mb-6">Agrega un nuevo comentario</p>
 
-                    <form action="">
+                    @if (session('message'))
+                        <p class="bg-green-500 text-white my-2 p-2 rounded-lg text-sm text-center">{{ session('message') }}</p>
+                    @endif
+
+                    <form action="{{ route('comments.store', ['post' => $post]) }}" method="post">
+                        @csrf
                         <div class="mb-3">
                             <textarea
                                 id="comment"
@@ -54,6 +59,26 @@
                         >
                     </form>
                 @endauth
+
+                <div class="bg-white shadow mb-5 max-h-96 overflow-y-scroll mt-10">
+                    @if ($post->comments->count())
+                        @foreach ($post->comments as $comment)
+                            <div class="p-5 border-gray-300 border-b">
+                                <a
+                                    href="{{ route('posts.index', $comment->user->username) }}"
+                                    class="font-bold text-sm"
+                                >
+                                    {{ $comment->user->username }}
+                                </a>
+
+                                <p>{{ $comment->comment }}</p>
+                                <p class="text-sm text-gray-500">{{ $comment->created_at->diffForHumans() }}</p>
+                            </div>
+                        @endforeach
+                    @else
+                        <p class="p-10 text-center text-gray-500 font-bold">No hay comentarios</p>
+                    @endif
+                </div>
             </div>
         </div>
     </div>
