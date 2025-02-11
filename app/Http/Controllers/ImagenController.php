@@ -26,4 +26,6 @@ class ImagenController extends Controller
 
         return response()->json(['imagen' => $image_name]);
     }
+
+    
 }

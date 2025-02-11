@@ -26,6 +26,21 @@
                     {{ $post->description }}
                 </p>
             </div>
+
+            @auth
+                @if ($post->user_id === auth()->user()->id)
+                    <form action="{{ route('posts.destroy', $post) }}" method="POST">
+                        {{-- Method spoofing --}}
+                        @method('DELETE')
+                        @csrf
+                        <input
+                            type="submit"
+                            class="bg-red-500 hover:bg-red-600 p-2 rounded text-white font-bold mt-4 cursor-pointer"
+                            value="Eliminar publicación"
+                        >
+                    </form>
+                @endif
+            @endauth
         </div>
 
         <div class="md:w-1/2">
