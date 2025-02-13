@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ImagenController;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PostController;
@@ -55,6 +56,9 @@ Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.
 Route::get('/{user:username}/posts/{post}', [PostController::class, 'show'])->name('posts.show');
 
 Route::post('/posts/{post}/comment', [CommentController::class, 'store'])->name('comments.store');
+
+Route::post('/posts/{post}/likes', [LikeController::class, 'store'])->name('posts.likes.store');
+Route::delete('/posts/{post}/likes', [LikeController::class, 'destroy'])->name('posts.likes.destroy');
 
 /**
  * Subir imagenes al servidor.
